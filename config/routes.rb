@@ -14,10 +14,7 @@ Rails.application.routes.draw do
   #管理側のルーティング設定
   namespace :admin do
     get "/" => "homes#top"
-    get "genres" => "genres#index"
-    post "genres" => "genres#create"
-    get "genres/:id/edit" => "genres#edit"
-    get "genres/:id" => "genres#update"
+    resources :genres, only:[:index, :create, :edit, :update]
   end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
