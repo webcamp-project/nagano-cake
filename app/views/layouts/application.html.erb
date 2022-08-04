@@ -6,11 +6,30 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <a>
+      <span>LOGO</span>
+    </a>
+    <% if admin_signed_in? %>
+            <li>商品一覧</li>
+            <li>会員一覧</li>
+            <li>注文履歴一覧</li>
+            <li>ジャンル一覧</li>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to "About", home_about_path %>
+            </li>
+            <li>商品一覧</li>
+            <li>新規登録</li>
+            <li>ログイン</li>
+            <% end %>
     <%= yield %>
   </body>
 </html>

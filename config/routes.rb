@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   #会員側のルーティング設定
-  namespace :public do
-    root to: 'homes#top'
-    get '/home/about' => 'homes#about'
+  scope module: :public do
+    root to: "homes#top"
+    get "/home/about" => "homes#about"
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
@@ -14,9 +14,13 @@ Rails.application.routes.draw do
   #管理側のルーティング設定
   namespace :admin do
     get "/" => "homes#top"
+    get "genres" => "genres#index"
+    post "genres" => "genres#create"
+    get "genres/:id/edit" => "genres#edit"
+    get "genres/:id" => "genres#update"
   end
 
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
