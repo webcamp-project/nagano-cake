@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      genre:
+        name: ジャンル名
+      item:
+        name: 商品名
+        introduction: 商品説明
+        price: 価格
+
