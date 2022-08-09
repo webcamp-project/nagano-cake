@@ -1,0 +1,22 @@
+<h4>会員一覧</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= link_to customer.full_name, admin_customer_path(item.id) %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.is_delete ? '有効' : '退会' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

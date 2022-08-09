@@ -1,0 +1,37 @@
+ <%= form_with model: @item, url: admin_item_path do |f| %>
+    <h4>
+     <%= @customer.full_name %>さんの会員詳細
+    </h4>
+    <div>
+      <label>会員ID</label>
+      <%= @customer.id %>
+    </div>
+    <div>
+      <label>氏名</label>
+      <%= @customer.full_name %>
+    </div>
+    <div>
+      <label>フリガナ</label>
+      <%= @customer.full_name_kana %>
+    </div>
+    <div>
+      <label>郵便番号</label>
+      <%= @customer.postal_code %>
+    </div>
+    <div>
+      <label>住所</label>
+      <%= @customer.address %>
+    </div>
+    <div>
+      <label>電話番号</label>
+      <%= @customer.phone_number %>
+    </div>
+    <div>
+      <label>メールアドレス</label>
+      <%= @customer.email %>
+    </div>
+    <div>
+      <label>会員ステータス</label>
+      <%= @customer.is_deleted %>
+    </div>
+<% end %>
