@@ -8,7 +8,7 @@
     </div>
     <div>
       <label>氏名</label>
-      <%= @customer.full_name %>
+      <%= @customer.last_name %>  <%= @customer.first_name %>
     </div>
     <div>
       <label>フリガナ</label>
@@ -24,7 +24,7 @@
     </div>
     <div>
       <label>電話番号</label>
-      <%= @customer.phone_number %>
+      <%= @customer.telephone_number %>
     </div>
     <div>
       <label>メールアドレス</label>
@@ -32,6 +32,11 @@
     </div>
     <div>
       <label>会員ステータス</label>
-      <%= @customer.is_deleted %>
+      <%= @customer.is_delete ? '有効' : '退会' %>
     </div>
+    <div>
+      <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
+      <%= link_to "注文履歴一覧を見る", admin_path %>
+    </div>
+
 <% end %>
