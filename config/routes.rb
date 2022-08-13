@@ -5,8 +5,11 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/home/about" => "homes#about"
     delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+    post "/customers/confirm" => "customers#confirm"
+    patch "/customers/update_status" => "customers#update_status"
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :update, :destroy, :create]
+    resources :customers, only:[:show, :edit, :update]
   end
 
   devise_for :customers, skip:[:passwords], controllers: {

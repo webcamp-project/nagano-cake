@@ -10,41 +10,44 @@
   <% end %>
 
   <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
-    <div>
-      <label>会員ID</label>
-      <%= @customer.id %>
-    </div>
-    <div>
-      <label>氏名</label>
-      <%= f.text_field :last_name %>
-      <<%= f.text_field :first_name %>
-    </div>
-    <div>
-      <label>フリガナ<label>
-      <%= f.text_field :last_name_kana %>
-      <%= f.text_field :first_name_kana %>
-    </div>
-    <div>
-      <label>郵便番号</label>
-      <%= f.text_field :postal_code %>
-    </div>
-    <div>
-      <label>住所</label>
-      <%= f.text_field :address %>
-    </div>
-    <div>
-      <label>電話番号</label>
-      <%= f.text_field :telephone_number %>
-    </div>
-    <div>
-      <label>メールアドレス</label>
-      <%= f.text_field :email %>
-    </div>
-
-    <div>
-      <label>会員ステータス</label>
-      <label><%= f.radio_button :is_delete, true %>有効</label>
-      <label><%= f.radio_button :is_delete, false %>退会</label>
-    </div>
-    <%= f.submit '変更を保存' %>
+    <table>
+      <tr>
+        <td>会員ID</td>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <td>氏名</td>
+        <td><%= f.text_field :last_name %></td>
+        <td><%= f.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <td>フリガナ</td>
+        <td><%= f.text_field :last_name_kana %></td>
+        <td><%= f.text_field :first_name_kana %></td>
+      </tr>
+      <tr>
+        <td>郵便番号</td>
+        <td><%= f.text_field :postal_code %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= f.text_field :address %></td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td><%= f.text_field :telephone_number %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <td>会員ステータス</td>
+        <td><%= f.radio_button :is_delete, true %>有効 <%= f.radio_button :is_delete, false %>退会</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit '変更を保存' %></td>
+      </tr>
+    </table>
   <% end %>
