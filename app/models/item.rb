@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_one_attached :image
+  has_many :cart_items
   belongs_to :genre
 
   validates :name, presence: true
@@ -13,9 +14,9 @@ class Item < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def add_tax_price
-    (self.price * 1.10).round
+    (self.price * 1.10).floor
   end
 
 end
