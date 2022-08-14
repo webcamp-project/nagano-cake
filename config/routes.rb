@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   #会員側のルーティング設定
+  devise_for :customers, skip:[:passwords], controllers: {
+    sessions: 'public/sessions',
+    registrations: 'public/registrations'
+  }
+
   scope module: :public do
     root to: "homes#top"
     get "/home/about" => "homes#about"
@@ -10,12 +15,8 @@ Rails.application.routes.draw do
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :update, :destroy, :create]
     resources :customers, only:[:show, :edit, :update]
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
-
-  devise_for :customers, skip:[:passwords], controllers: {
-    sessions: 'public/sessions',
-    registrations: 'public/registrations'
-  }
 
   #管理側のルーティング設定
   namespace :admin do

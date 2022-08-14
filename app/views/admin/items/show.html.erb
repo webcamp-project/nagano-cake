@@ -1,30 +1,33 @@
 <h4>商品詳細</h4>
+  <div>
+  <%= image_tag @item.get_image(200,100) %>
+  </div>
 
-<%= image_tag @item.get_image(200,100) %>
-
- <%= form_with model: @item, url: admin_item_path do |f| %>
-    <div>
-      <label>商品名</label>
-      <%= @item.name %>
-    </div>
-    <div>
-      <label>商品説明</label>
-      <%= @item.introduction %>
-    </div>
-    <div>
-      <label>ジャンル</label>
-      <%= @item.genre.name %>
-    </div>
-    <div>
-      <label>
-        税込価格<br>
-        (税込価格)
-      </label>
-        <%= @item.price.to_s(:delimited) %> (<%= @item.add_tax_price.to_s(:delimited) %>) 円
-    </div>
-    <div>
-    <label>販売ステータス</label>
-      <%= @item.is_active ? '販売中' : '販売停止中' %>
-    </div>
+  <%= form_with model: @item, url: admin_item_path do |f| %>
+    <table>
+      <tr>
+        <td>商品名</td>
+        <td><%= @item.name %></td>
+      </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= @item.introduction %></td>
+      </tr>
+      <tr>
+        <td>ジャンル</td>
+        <td><%= @item.genre.name %></td>
+      </tr>
+      <tr>
+        <td>
+          税込価格<br>
+          (税込価格)
+        </td>
+        <td><%= @item.price.to_s(:delimited) %> (<%= @item.add_tax_price.to_s(:delimited) %>) </td>
+      </tr>
+      <tr>
+        <td>販売ステータス</td>
+        <td><%= @item.is_active ? '販売中' : '販売停止中' %></td>
+      </tr>
+    </table>
     <div><%= link_to "編集する", edit_admin_item_path(@item.id) %></div>
   <% end %>

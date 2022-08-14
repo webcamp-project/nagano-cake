@@ -1,5 +1,5 @@
 <h4>商品編集</h4>
-
+<p id="notice"><%= notice %></p>
   <% if @item.errors.any? %>
     <%= @item.errors.count %>件のエラーが発生しました
     <ul>
@@ -10,30 +10,33 @@
   <% end %>
 
   <%= form_with model: @item, url: admin_item_path, local:true do |f| %>
-    <div>
-      <label>商品画像</label>
-      <%= f.file_field :image, accept: "image/*" %>
-    </div>
-    <div>
-      <label>商品名</label>
-      <%= f.text_field :name %>
-    </div>
-    <div>
-      <label>商品説明<label>
-      <%= f.text_area :introduction %>
-    </div>
-    <div>
-      <label>ジャンル</label>
-      <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
-    </div>
-    <div>
-    <label>税抜価格</label>
-      <%= f.text_field :price %>円
-    </div>
-    <label>販売ステータス</label>
-    <label><%= f.radio_button :is_active, true %>販売中</label>
-    <label><%= f.radio_button :is_active, false %>販売停止中</label>
-    <%= f.submit '変更を保存' %>
+    <table>
+      <tr>
+        <td>商品画像
+        <td><%= f.file_field :image, accept: "image/*" %></td>
+      </tr>
+      <tr>
+        <td>商品名</td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= f.text_area :introduction %></td>
+      </tr>
+      <tr>
+        <td>ジャンル</td>
+        <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></td>
+      </tr>
+      <tr>
+        <td>税抜価格</td>
+        <td><%= f.text_field :price %>円</td>
+      </tr>
+      <tr>
+        <td>販売ステータス</td>
+        <td><%= f.radio_button :is_active, true %>販売中 <%= f.radio_button :is_active, false %>販売停止中</td>
+      </tr>
+    </table>
+    <div><%= f.submit '変更を保存' %></div>
   <% end %>
 
 
