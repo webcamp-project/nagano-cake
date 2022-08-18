@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :cart_items, only:[:index, :update, :destroy, :create]
     resources :customers, only:[:show, :edit, :update]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-    resources :orders, only:[:new, :index, :show]
+    resources :orders, only:[:new, :create, :index, :show]
   end
 
   #管理側のルーティング設定
