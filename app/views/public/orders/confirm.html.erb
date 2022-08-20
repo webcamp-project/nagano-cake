@@ -1,5 +1,5 @@
 <h5>注文情報確認</h5>
-  <%= form_with model: @order, url: orders_complete_path, method: :get do |f| %>
+  <%= form_with model: @order, local:true do |f| %>
     <table>
       <thead>
         <tr>
