@@ -37,16 +37,20 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    puts "ー－－－－－－－－"
-    puts params
     @order.customer_id = current_customer.id
     @order.save
 
-    current_customer.cart_item.each do |cart_item|
-      @order_detail = OrderDetail.new(order_detail_params)
+    current_customer.cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
       @order_detail.item_id = cart_item.item_id
-      @order_detail.amount = cart_item
+      @order_detail.amount = cart_item.amount
+      @order_detail.product_total = cart_item.item.add_tax_price
+      @order_detail.order_id = @order.id
+      @order_detail.save
     end
+
+  current_customer.order_details.destroy_all
+  redirect_to order_complete_path
 
   end
 
@@ -54,11 +58,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = current_customer.orders
+    @orders = current_customer.orders
   end
 
   def show
-
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   private
