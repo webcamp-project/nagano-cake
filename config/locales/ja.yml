@@ -27,3 +27,9 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+      receive_status:
+        wait_payment: "入金待ち"
+        confirm_payment: "入金確認"
+        make_items: "製作中"
+        prepare_shipment: "発送準備中"
+        complete_shipment: "発送済み"
