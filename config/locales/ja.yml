@@ -33,3 +33,9 @@ ja:
         make_items: "製作中"
         prepare_shipment: "発送準備中"
         complete_shipment: "発送済み"
+    order_detail:
+      making_status:
+        unable_make: "製作不可"
+        wait_make: "製作待ち"
+        make_items: "製作中"
+        complete_items: "製作完了"

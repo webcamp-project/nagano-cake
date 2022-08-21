@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :order_new, only: [:new]
 
   def new
     @order = Order.new
@@ -49,8 +50,8 @@ class Public::OrdersController < ApplicationController
       @order_detail.save
     end
 
-  current_customer.order_details.destroy_all
-  redirect_to order_complete_path
+    current_customer.cart_items.destroy_all
+    redirect_to orders_complete_path
 
   end
 
@@ -64,6 +65,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    @total = 0
   end
 
   private
@@ -72,4 +74,7 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :postal_code, :name, :address, :total_price, :postage)
   end
 
+  def order_new
+    redirect_to cart_items_path, notice: "カートに商品を入れてください。" if current_customer.cart_items.blank?
+  end
 end
