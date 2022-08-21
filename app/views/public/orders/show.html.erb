@@ -1,2 +1,63 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h4>注文履歴詳細</h4>
+  <div><strong>注文情報</strong></div>
+    <table>
+      <tr>
+        <td>注文日</td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
+        <td>配送先</td>
+        <td>
+          <%= @order.postal_code %><br>
+          <%= @order.address %><br>
+          <%= @order.name %>
+        </td>
+      </tr>
+      <tr>
+        <td>支払方法</td>
+        <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
+      </tr>
+      <tr>
+        <td>ステータス</td>
+        <td><%= Order.receive_statuses_i18n[@order.receive_status] %></td>
+      </tr>
+    </table>
+
+  <div><strong>注文内容</strong></div>
+    <table>
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>単価 (税込)</th>
+          <th>個数</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.item.add_tax_price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.subtotal %></td>
+            <% @total += order_detail.subtotal %>
+          </tr>
+        <% end %>
+      </tbody>
+   </table>
+
+  <div><strong>請求情報</strong></div>
+   <table>
+     <tr>
+       <td>商品合計</td>
+       <td><%= @total.to_s(:delimited) %></td>
+     </tr>
+     <tr>
+       <td>配送料</td>
+       <td>800</td>
+     </tr>
+     <tr>
+       <td><strong>ご請求金額</strong></td>
+       <td><%= (@total+800).to_s(:delimited) %></td>
+     </tr>
+   </table>

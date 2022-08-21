@@ -21,10 +21,10 @@
           </td>
           <td>
             <% order.order_details.each do |order_detail| %>
-            <%= order.order_details.item_name %>
+            <%= order_detail.item.name %>
             <% end %>
           </td>
-          <td><%= order.total_price %></td>
+          <td><%= order.total_price.to_s(:delimited) %></td>
           <td><%= Order.receive_statuses_i18n[order.receive_status] %></td>
           <td><%= link_to "表示する", order_path(order.id) %></td>
 
