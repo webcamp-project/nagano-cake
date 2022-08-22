@@ -23,6 +23,7 @@
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
             </li>
     <% elsif customer_signed_in? %>
+            <p>ようこそ、<%= current_customer.last_name %>さん！</p>
             <li>マイページ</li>
             <li>商品一覧</li>
             <li>カート</li>
