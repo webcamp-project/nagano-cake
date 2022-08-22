@@ -26,7 +26,6 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_delete: true)
     reset_session
-    flash[:notice] = "退会が完了しました。"
     redirect_to root_path
   end
 

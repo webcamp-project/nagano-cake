@@ -10,3 +10,6 @@
   <tr><td>電話番号</td><td><%= @customer.telephone_number %></td></tr>
   <tr><td>メールアドレス</td><td><%= @customer.email %></td></tr>
 </table>
+
+<div><strong>配送先</strong><%= link_to "一覧を見る", addresses_path %></div>
+<div><strong>注文履歴</strong><%= link_to "一覧を見る", orders_path %></div>
