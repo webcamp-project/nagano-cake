@@ -15,28 +15,22 @@
       <span>LOGO</span>
     </a>
     <% if admin_signed_in? %>
-            <li>商品一覧</li>
-            <li>会員一覧</li>
-            <li>注文履歴一覧</li>
-            <li>ジャンル一覧</li>
-            <li>
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-            </li>
+            <li><%= link_to "商品一覧", admin_items_path %></li>
+            <li><%= link_to "会員一覧", admin_customers_path %></li>
+            <li><%= link_to "注文履歴一覧", admin_path %></li>
+            <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
     <% elsif customer_signed_in? %>
             <p>ようこそ、<%= current_customer.last_name %>さん！</p>
-            <li>マイページ</li>
-            <li>商品一覧</li>
-            <li>カート</li>
-            <li>
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-            </li>
+            <li><%= link_to "マイページ", customer_path(current_customer.id) %></li>
+            <li><%= link_to "商品一覧", items_path %></li>
+            <li><%= link_to "カート", cart_items_path %></li>
+            <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
     <% else %>
-            <li>
-              <%= link_to "About", home_about_path %>
-            </li>
-            <li>商品一覧</li>
-            <li>新規登録</li>
-            <li>ログイン</li>
+            <li><%= link_to "About", home_about_path %></li>
+            <li><%= link_to "商品一覧", items_path %></li>
+            <li><%= link_to "新規登録", new_customer_registration_path %></li>
+            <li><%= link_to "ログイン", new_customer_session_path %></li>
     <% end %>
 
     <main><%= yield %></main>
