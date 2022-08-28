@@ -20,7 +20,7 @@ class Admin::ItemsController < ApplicationController
   def index
     @geners = Genre.all
     @item = Item.new
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def show
