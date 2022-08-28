@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+header {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.search-all {
+  padding-bottom: 5px;
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+}
