@@ -1,5 +1,5 @@
-<div class ="container">
-  <div class ="row">
+<div class="container">
+  <div class="row">
     <div class="col-xs-6">
       <h2 class="mt-3">管理者ログイン</h2>
     </div>
@@ -15,8 +15,11 @@
           <%= f.label :パスワード, class: "col-md-4" %>
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
-        <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-primary btn center-block" %>
+        <div class="row">
+          <div class="offset-sm-4"></div>
+          <div class="actions">
+            <%= f.submit "ログイン", class: "btn btn-primary btn center-block my-4" %>
+          </div>
         </div>
       <% end %>
       <%= render "admin/shared/links" %>
