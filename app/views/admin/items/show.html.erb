@@ -6,30 +6,29 @@
     <div>
       <%= image_tag @item.get_image(300,200) %>
     </div>
-    <div class="offset-sm-1 col-sm-3">
-      <%= form_with model: @item, url: admin_item_path do |f| %>
+    <div class="col-sm-5">
         <table class="table table-borderless">
           <tr>
-          <td>商品名</td>
+          <th>商品名</th>
           <td><%= @item.name %></td>
         </tr>
         <tr>
-          <td>商品説明</td>
-          <td class="offset-sm-6"><%= @item.introduction %></td>
+          <th>商品説明</th>
+          <td><%= @item.introduction %></td>
         </tr>
         <tr>
-          <td>ジャンル</td>
+          <th>ジャンル</th>
           <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-          <td>
+          <th>
             税込価格<br>
             (税込価格)
-          </td>
-          <td><%= @item.price.to_s(:delimited) %> (<%= @item.add_tax_price.to_s(:delimited) %>) </td>
+          </th>
+          <td><%= @item.price.to_s(:delimited) %> (<%= @item.add_tax_price.to_s(:delimited) %>)</td>
         </tr>
         <tr>
-          <td class="col-md-7">販売ステータス</td>
+          <th>販売ステータス</th>
           <td>
             <% if @item.is_active %>
               <div class="text-success">販売中</div>
@@ -44,7 +43,7 @@
 
   <div class="row">
     <div class="offset-sm-4 col-sm-2">
-      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success btn-success btn-circle btn-lg" %></div>
-    <% end %>
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success btn-success btn-circle btn-lg" %>
+    </div>
   </div>
 </div>

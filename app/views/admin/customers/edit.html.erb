@@ -10,7 +10,7 @@
   <% end %>
 
   <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
-    <table>
+    <table class="table table-borderless">
       <tr>
         <td>会員ID</td>
         <td><%= @customer.id %></td>
