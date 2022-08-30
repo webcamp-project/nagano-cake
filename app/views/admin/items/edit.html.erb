@@ -1,42 +1,51 @@
-<h4>商品編集</h4>
-<p id="notice"><%= notice %></p>
-  <% if @item.errors.any? %>
-    <%= @item.errors.count %>件のエラーが発生しました
-    <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<div class="container my-4">
+  <div class="row offset-sm-2 my-3">
+    <h4 class="bg-light">商品編集</h4>
+  </div>
+  <p id="notice"><%= notice %></p>
+    <% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
+  <div class="row">
   <%= form_with model: @item, url: admin_item_path, local:true do |f| %>
-    <table>
+    <table class="table table-borderless offset-sm-7">
       <tr>
-        <td>商品画像
+        <th>商品画像</th>
         <td><%= f.file_field :image, accept: "image/*" %></td>
       </tr>
       <tr>
-        <td>商品名</td>
+        <th>商品名</th>
         <td><%= f.text_field :name %></td>
       </tr>
       <tr>
-        <td>商品説明</td>
+        <th>商品説明</th>
         <td><%= f.text_area :introduction %></td>
       </tr>
       <tr>
-        <td>ジャンル</td>
+        <th>ジャンル</th>
         <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></td>
       </tr>
       <tr>
-        <td>税抜価格</td>
+        <th>税抜価格</th>
         <td><%= f.text_field :price %>円</td>
       </tr>
       <tr>
-        <td>販売ステータス</td>
+        <th>販売ステータス</th>
         <td><%= f.radio_button :is_active, true %>販売中 <%= f.radio_button :is_active, false %>販売停止中</td>
       </tr>
     </table>
-    <div><%= f.submit '変更を保存' %></div>
+  </div>
+
+  <div class="row">
+    <div class="offset-sm-5"><%= f.submit '変更を保存', class: "btn btn-success btn-success btn-circle btn-sm" %></div>
+  </div>
   <% end %>
+</div>
 
 
