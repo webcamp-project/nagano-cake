@@ -1,36 +1,43 @@
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th><ジャンル検索></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @genres.each do |genre| %>
-      <tr>
-        <td><%= link_to genre.name, items_path(genre_id: genre.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<div>
-  <%= image_tag @item.get_image(200,100) %>
-</div>
-
-<div>
-  <h4><%= @item.name %></h4>
-    <div><%= @item.introduction %></div>
-    <div>
-      <span style="font-size:180%;">¥<%= @item.add_tax_price.to_s(:delimited) %></span>
-      <span style="font-size:60%;">(税込)</span>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-sm-3">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center"><ジャンル検索></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= link_to genre.name, items_path(genre_id: genre.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  <%= form_with model: @cart_item, local:true do |f| %>
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.hidden_field :customer_id, :value => @customer.id %>
-    <%= f.select :amount, *[1..10], {include_blank: '個数選択'} %>
-    <%= f.submit 'カートに入れる' %>
-  <% end %>
+
+  <div class="mx-4">
+    <%= image_tag @item.get_image(250,150) %>
+  </div>
+
+  <div>
+    <h3><%= @item.name %></h3>
+      <div><%= @item.introduction %></div>
+      <div class="mt-5">
+        <span style="font-size:150%;">¥<%= @item.add_tax_price.to_s(:delimited) %></span>
+        <span style="font-size:60%;">(税込)</span>
+      </div>
+    <div class="my-4">
+    <%= form_with model: @cart_item, local:true do |f| %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.hidden_field :customer_id, :value => @customer.id %>
+      <%= f.select :amount, *[1..10], {include_blank: '個数選択'} %>
+      <%= f.submit 'カートに入れる', class: "btn btn-success btn-success btn-circle btn-sm mx-5" %>
+    <% end %>
+    </div>
+  </div>
+</div>
 </div>
 
 
