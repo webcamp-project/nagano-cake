@@ -1,4 +1,6 @@
-<h5>注文情報確認</h5>
+<div class="container">
+  <div class="row">
+    <h5>注文情報確認</h5>
   <%= form_with model: @order, local:true do |f| %>
     <table>
       <thead>
@@ -53,3 +55,5 @@
     <%= f.submit '注文を確定する' %>
     </div>
   <% end %>
+  </div>
+</div>
