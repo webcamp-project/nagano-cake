@@ -17,6 +17,11 @@
           <%= link_to root_path do %>
             <%= image_tag "nagano_cake.jpg", size: '175x125' %>
           <% end %>
+          <% if customer_signed_in? %>
+          <div class="offset-2 mt-3">
+            <p>ようこそ、<%= current_customer.last_name %>さん！</p>
+          </div>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -29,7 +34,6 @@
                 <li class="nav-item border border-1 mx-1"><%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-dark' %></li>
                 <li class="nav-item border border-1 mx-1"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %></li>
               <% elsif customer_signed_in? %>
-                <p>ようこそ、<%= current_customer.last_name %>さん！</p>
                 <li class="nav-item border border-1 mx-1"><%= link_to "マイページ", customer_path(current_customer.id), class: 'nav-link text-dark' %></li>
                 <li class="nav-item border border-1 mx-1"><%= link_to "商品一覧", items_path, class: 'nav-link text-dark' %></li>
                 <li class="nav-item border border-1 mx-1"><%= link_to "カート", cart_items_path, class: 'nav-link text-dark' %></li>

@@ -24,3 +24,13 @@ header {
   display: flex;
   justify-content: flex-end;
 }
+
+.top_picture {
+  width:790px;
+  height:250px;
+  margin-top: 20px;
+  background-image: url(shop.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 50px 200px;
+}

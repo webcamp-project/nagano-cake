@@ -1,47 +1,53 @@
-<div>
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th><ジャンル検索></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @genres.each do |genre| %>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-sm-3">
+      <table class="table table-bordered">
+        <thead>
           <tr>
-            <td><%= link_to genre.name, items_path(genre_id: genre.id) %></td>
+            <th class="text-center"><ジャンル検索></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <div>
-    <div>
-      <p>
-        ようこそながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。<br>
-      </p>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= link_to genre.name, items_path(genre_id: genre.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  </div>
 
-  <div>
-    <h2>新着商品</h2>
-      <% @items.each do |item| %>
-        <div>
-        <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_image(150,100) %><br>
-        <% end %>
-        <%= item.name %><br>
-        ¥<%= item.add_tax_price.to_s(:delimited) %>
+    <div class="col-sm-9">
+      <div class="border border-secondary mb-3">
+        <div class="top_picture">
+          <p class="border border-secondary py-3">
+            ようこそながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。<br>
+          </p>
         </div>
-      <% end %>
-  </div>
-  <div>
-    <%= link_to "全ての商品を見る", items_path %>
+      </div>
+
+      <div>
+        <h2>新着商品</h2>
+          <div class="d-flex flex-row">
+          <% @items.each do |item| %>
+            <div class="mx-3">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image(200,150)%><br>
+              <% end %>
+              <%= item.name %><br>
+              ¥<%= item.add_tax_price.to_s(:delimited)%>
+            </div>
+          <% end %>
+          </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <%= link_to "全ての商品を見る", items_path %>
+      </div>
+    </div>
   </div>
 </div>
 
