@@ -1,48 +1,52 @@
-<h5>会員情報編集</h5>
+<div class="container my-4">
+  <div class="row offset-1 my-3">
+    <h5 class=bg-light>会員情報編集</h5>
+  </div>
 
-  <% if @customer.errors.any? %>
-    <%= @customer.errors.count %>件のエラーが発生しました
-    <ul>
-      <% @customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <% if @customer.errors.any? %>
+      <%= @customer.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="row">
+      <%= form_with model: @customer, local:true do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <td>氏名</td>
+            <td><%= f.text_field :last_name %></td>
+            <td><%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td><%= f.text_field :last_name_kana %></td>
+            <td><%= f.text_field :first_name_kana %></td>
+          </tr>
+            <td>郵便番号</td>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address, size: "30%" %></td>
+          </td>
+          <tr>
+            <td>電話番号</td>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit '編集内容を保存', class: "btn btn-success btn-success btn-circle btn-sm col-8" %></td>
+            <td></td>
+            <td><%= link_to "退会する", customers_confirm_path, method: :post, class: "btn btn-danger btn-danger btn-circle btn-sm" %></td>
+          </tr>
+        </table>
       <% end %>
-    </ul>
-  <% end %>
-
-  <%= form_with model: @customer, local:true do |f| %>
-    <div>
-      <table>
-        <tr>
-          <td>氏名</td>
-          <td><%= f.text_field :last_name %></td>
-          <td><%= f.text_field :first_name %></td>
-        </tr>
-        <tr>
-          <td>フリガナ</td>
-          <td><%= f.text_field :last_name_kana %></td>
-          <td><%= f.text_field :first_name_kana %></td>
-        </tr>
-          <td>郵便番号</td>
-          <td><%= f.text_field :postal_code %></td>
-        </tr>
-        <tr>
-          <td>住所</td>
-          <td><%= f.text_field :address %></td>
-        </td>
-        <tr>
-          <td>電話番号</td>
-          <td><%= f.text_field :telephone_number %></td>
-        </tr>
-        <tr>
-          <td>メールアドレス</td>
-          <td><%= f.text_field :email %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.submit '編集内容を保存' %></td>
-          <td></td>
-          <td><%= link_to "退会する", customers_confirm_path, method: :post %></td>
-        </tr>
-      </table>
     </div>
-  <% end %>
+</div>
