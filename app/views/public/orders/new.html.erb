@@ -21,7 +21,7 @@
       <h5><strong>お届け先</strong></h5>
         <div class="offset-1">
           <div class="my-2">
-            <label><%= f.radio_button :send_address, 0 %>ご自身の住所</label>
+            <label><%= f.radio_button :send_address, 0, checked:true %>ご自身の住所</label>
             <div class="mx-5"><%= current_customer.postal_code %> <%= current_customer.address %> <%= current_customer.full_name %></div>
           </div>
           <div class="my-2">

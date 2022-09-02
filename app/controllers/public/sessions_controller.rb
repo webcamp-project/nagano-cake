@@ -41,6 +41,8 @@ class Public::SessionsController < Devise::SessionsController
       if @customer.valid_password?(params[:customer][:password]) && @customer.is_delete == true
         flash[:notice] = "退会済みの為、再登録が必要です。"
         redirect_to new_customer_registration_path
+      else
+        flash[:error] = "必須項目を入力してください。"
       end
   end
 end
