@@ -1,4 +1,7 @@
 ja:
+  errors:
+    messages:
+      not_saved: "処理が実行されませんでした。"
   activerecord:
     attributes:
       genre:
@@ -10,12 +13,13 @@ ja:
       customer:
         last_name: 姓
         first_name: 名
+        email: メールアドレス
         last_name_kana: セイ
         first_name_kana: メイ
         postal_code: 郵便番号
         address: 住所
         telephone_number: 電話番号
-        email: メールアドレス
+        password: パスワード
       address:
         name: 宛名
         postal_code: 郵便番号
