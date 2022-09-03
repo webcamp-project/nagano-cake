@@ -1,5 +1,8 @@
-<h4>配送先登録/一覧</h4>
-<p id="notice"><%= notice %></p>
+<div class="container my-4">
+  <div>
+    <h4 class="bg-light">配送先登録/一覧</h4>
+  </div>
+  <p id="notice"><%= notice %></p>
 
   <% if @address.errors.any? %>
     <%= @address.errors.count %>件のエラーが発生しました
@@ -11,22 +14,22 @@
   <% end %>
 
 <%= form_with model: @address, url: addresses_path, local:true do |f| %>
-  <table>
-    <tr>
-      <td>郵便番号(ハイフンなし)</td>
-      <td><%= f.text_field :postal_code %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td><%= f.text_field :address %></td>
-    </tr>
-    <tr>
-      <td>宛名</td>
-      <td><%= f.text_field :name %></td>
-      <td></td>
-      <td><%= f.submit '新規登録' %></td>
-    </tr>
-  </table>
+  <div>
+    郵便番号(ハイフンなし)
+    <%= f.text_field :postal_code %>
+  </div>
+  <div>
+    住所
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    宛名
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <td></td>
+    <td><%= f.submit '新規登録' %></td>
+  </div>
 <% end %>
 
 <table>
@@ -52,3 +55,4 @@
     <% end %>
   </tbody>
 </table>
+</div>
