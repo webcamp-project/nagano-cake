@@ -34,3 +34,7 @@ header {
   background-position: center;
   padding: 50px 200px;
 }
+
+.height {
+  height: 600px;
+}

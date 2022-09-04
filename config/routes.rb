@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/home/about" => "homes#about"
     delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+    get "/customers" => "customers#show"
     post "/customers/confirm" => "customers#confirm"
     patch "/customers/update_status" => "customers#update_status"
     post "/orders/confirm" => "orders#confirm"
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
 
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :update, :destroy, :create]
-    resources :customers, only:[:show, :edit, :update]
+    resources :customers, only:[:edit, :update]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     resources :orders, only:[:new, :create, :index, :show]
   end
