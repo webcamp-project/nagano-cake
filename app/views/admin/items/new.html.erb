@@ -14,7 +14,7 @@
     </ul>
   <% end %>
 
-  <%= form_with model: @item, url: admin_items_path do |f| %>
+  <%= form_with model: @item, url: admin_items_path, method: :POST, local:true do |f| %>
     <div class="offset-sm-2 col-md-10">
       <div>
         <%= f.label :商品画像 ,class: "col-md-3" %>
@@ -22,11 +22,11 @@
       </div>
       <div>
         <%= f.label :商品名 ,class: "col-md-3" %>
-        <%= f.text_field :name, class: "col-md-5" %>
+        <%= f.text_field :name, size: "40" %>
       </div>
       <div>
         <%= f.label :商品説明 ,class: "col-md-3" %>
-        <%= f.text_area :introduction, class: "col-md-5" %>
+        <%= f.text_area :introduction, size: "42" %>
       </div>
       <div>
         <%= f.label :ジャンル ,class: "col-md-3" %>
@@ -34,7 +34,7 @@
       </div>
       <div>
         <%= f.label :税抜価格 ,class: "col-md-3" %>
-        <%= f.text_field :price, class: "col-md-5" %>円
+        <%= f.text_field :price, size: "40" %>円
       </div>
       <div>
         <%= f.label :販売ステータス ,class: "col-md-3" %>

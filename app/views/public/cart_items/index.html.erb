@@ -51,7 +51,7 @@
       <div class="col-sm-3">
         <table class="table table-bordered">
           <th class="bg-light">合計金額</th>
-          <td><%= @sum %></td>
+          <td><%= @sum.to_s(:delimited) %></td>
         </table>
       </div>
     </div>

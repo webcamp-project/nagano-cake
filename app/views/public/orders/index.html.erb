@@ -1,34 +1,41 @@
-<h5>注文履歴一覧</h5>
-  <table>
-    <thead>
-      <tr>
-        <th>注文日</th>
-        <th>配送先</th>
-        <th>注文商品</th>
-        <th>支払金額</th>
-        <th>ステータス</th>
-        <th>注文詳細</th>
-      </tr>
-    </thead>
-    <% @orders.each do |order| %>
+<div class="container my-4">
+  <div class="row my-4 offset-1">
+    <h5 class="bg-light">注文履歴一覧</h5>
+  </div>
+
+  <div>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>注文日</th>
+          <th style="width: 30%">配送先</th>
+          <th style="width: 15%">注文商品</th>
+          <th>支払金額</th>
+          <th>ステータス</th>
+          <th>注文詳細</th>
+        </tr>
+      </thead>
+      <% @orders.each do |order| %>
       <tbody>
         <tr>
-          <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-          <td>
+          <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="align-middle">
               <%= order.postal_code %><br>
               <%= order.address %><br>
               <%= order.name %>
           </td>
-          <td>
+          <td class="align-middle">
             <% order.order_details.each do |order_detail| %>
-            <%= order_detail.item.name %>
+            <%= order_detail.item.name %><br>
             <% end %>
           </td>
-          <td><%= order.total_price.to_s(:delimited) %></td>
-          <td><%= Order.receive_statuses_i18n[order.receive_status] %></td>
-          <td><%= link_to "表示する", order_path(order.id) %></td>
+          <td class="align-middle"><%= order.total_price.to_s(:delimited) %></td>
+          <td class="align-middle"><%= Order.receive_statuses_i18n[order.receive_status] %></td>
+          <td class="text-center align-middle"><%= link_to "表示する", order_path(order.id), class: "btn btn-primary btn center-block btn-sm" %></td>
 
         </tr>
       </tbody>
-    <% end %>
+      <% end %>
     </table>
+  </div>
+</div>
